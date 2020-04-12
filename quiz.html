@@ -7,7 +7,7 @@
 <style>
 body {
     font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .mainArea {
@@ -35,7 +35,7 @@ body {
 }
 
 .qpart_active {
-    font-size: 60px;
+    font-size: 50px;
     opacity: 1;
 }
 
@@ -46,13 +46,13 @@ body {
 
 input[type="text"]
 {
-    font-size: 40px;
+    font-size: 30px;
     text-align: center;
     vertical-align: middle; 
 }
 
 button {
-    //font-size: 40px;
+    //font-size: 30px;
 }
 
 #answerButton {
@@ -226,6 +226,8 @@ function renderQuestion(showAnswer)
         var s = q.parts[ip];
         if (!hyphen)
             s = s.replace(/-/g, '');
+        else
+            s = s.replace(/-/g, ' ');
             
         if (theQuiz.uppercase)
             s = s.toUpperCase();
@@ -420,7 +422,7 @@ function nextQuestion()
     if (curIndex == theQuiz.questions.length-1) {
         // Done all questions
         debug(`Done all questions, redirecting..`)
-        window.location = "done.html?next=" + window.location;
+        window.location = "done.html";
         return;
     }
     
@@ -437,11 +439,12 @@ function nextQuestion()
 
 <div class="mainArea">
 
-    <div style="height: 100px; font-size: 14px;">
+    <div style="height: 50px; font-size: 14px;">
         <input type="checkbox" id="showClue" name="showClue" value="1" onclick="renderQuestion()">
         <label for="showClue"> Gambar</label>
         <input type="checkbox" id="hyphen" name="hyphen" value="1" onclick="renderQuestion()" checked>
-        <label for="hyphen"> Hyphen</label>
+        <label for="hyphen"> Hyphen </label>
+        &nbsp; <A HREF="index.html"> Home</A>
     </div>
 
     <div class="clueArea">
@@ -461,7 +464,7 @@ function nextQuestion()
     <div>
         <div id="textInput">
             <input type="text" id="answer" size="6">
-            <img src="img/nextbutton.png" width=60 height=60 onclick="onAnswer(null)" id="answerButton">
+            <img src="img/nextbutton.png" width=50 height=50 onclick="onAnswer(null)" id="answerButton">
         </div>
         
         <div id="nextPart">

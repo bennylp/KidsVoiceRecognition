@@ -1,0 +1,64 @@
+{
+    "lang": "id-ID",
+    "title": "Binatang",
+    "clue": true,
+    "input": "voice",
+    "bgcolor": "linen",
+    "uppercase": true,
+    "next": "",
+    "display": 10,
+    "questions": [
+        {
+            "img": "cat.png",
+            "parts": ["ku-cing"]
+        },
+        {
+            "img": "cow.png",
+            "parts": ["sa-pi"]
+        },
+        {
+            "img": "cow2.png",
+            "parts": ["sa-pi"]
+        },
+        {
+            "img": "crocodile.png",
+            "parts": ["bu-a-ya"]
+        },
+        {
+            "img": "elephant.png",
+            "parts": ["ga-jah"]
+        },
+        {
+            "img": "fish.png",
+            "parts": ["i-kan"]
+        },
+        {
+            "img": "lamb.png",
+            "parts": ["kam-bing"]
+        },
+        {
+            "img": "panda.png",
+            "parts": ["pan-da"]
+        },
+        {
+            "img": "pigeon.png",
+            "parts": ["da-ra"]
+        },
+        {
+            "img": "rat.png",
+            "parts": ["ti-kus"]
+        },
+        {
+            "img": "sheep.png",
+            "parts": ["dom-ba"]
+        },
+        {
+            "img": "snake.png",
+            "parts": ["u-lar"]
+        },
+        {
+            "img": "zebra.png",
+            "parts": ["ze-bra"]
+        }
+    ]
+}

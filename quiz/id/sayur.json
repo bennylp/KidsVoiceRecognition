@@ -1,0 +1,40 @@
+{
+    "lang": "id-ID",
+    "title": "Sayur",
+    "clue": true,
+    "input": "voice",
+    "bgcolor": "linen",
+    "uppercase": true,
+    "next": "quiz/default.json",
+    "display": 10,
+    "questions": [
+        {
+            "img": "carrot.png",
+            "parts": ["wor-tel"]
+        },
+        {
+            "img": "coconut.png",
+            "parts": ["ke-la-pa"]
+        },
+        {
+            "img": "corn.png",
+            "parts": ["ja-gung"]
+        },
+        {
+            "img": "cucumber.png",
+            "parts": ["ti-mun"]
+        },
+        {
+            "img": "eggplant.png",
+            "parts": ["te-rong"]
+        },
+        {
+            "img": "mushroom.png",
+            "parts": ["ja-mur"]
+        },
+        {
+            "img": "tomato.png",
+            "parts": ["to-mat"]
+        }
+    ]
+}

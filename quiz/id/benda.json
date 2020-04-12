@@ -1,0 +1,72 @@
+{
+    "lang": "id-ID",
+    "title": "Benda",
+    "clue": true,
+    "input": "voice",
+    "bgcolor": "linen",
+    "uppercase": true,
+    "next": "quiz/default.json",
+    "display": 10,
+    "questions": [
+        {
+            "img": "balloon.png",
+            "parts": ["ba-lon"]
+        },
+        {
+            "img": "book.png",
+            "parts": ["bu-ku"]
+        },
+        {
+            "img": "broom.png",
+            "parts": ["sa-pu"]
+        },
+        {
+            "img": "bullet.png",
+            "parts": ["pe-lu-ru"]
+        },
+        {
+            "img": "bicycle.png",
+            "parts": ["se-pe-da"]
+        },
+        {
+            "img": "cactus.png",
+            "parts": ["kak-tus"]
+        },
+        {
+            "img": "cup.png",
+            "parts": ["cang-kir"]
+        },
+        {
+            "img": "hat.png",
+            "parts": ["to-pi"]
+        },
+        {
+            "img": "knife.png",
+            "parts": ["pi-sau"]
+        },
+        {
+            "img": "ring.png",
+            "parts": ["cin-cin"]
+        },
+        {
+            "img": "rocket.png",
+            "parts": ["ro-ket"]
+        },
+        {
+            "img": "soap.png",
+            "parts": ["sa-bun"]
+        },
+        {
+            "img": "table.png",
+            "parts": ["me-ja"]
+        },
+        {
+            "img": "tree.png",
+            "parts": ["po-hon"]
+        },
+        {
+            "img": "wall.png",
+            "parts": ["tem-bok"]
+        }
+    ]
+}

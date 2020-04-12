@@ -7,12 +7,28 @@
 <style>
 body {
     font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 40px;
+    font-size: 20px;
     background-color: linen;
 }
 
 .mainArea {
     text-align: center;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+.row {
+    padding-top: 30px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 </style>
@@ -23,13 +39,54 @@ body {
 
 <div class="mainArea">
 
-    <div style="padding-top: 100px;">
-        <A href="quiz.html?quiz=quiz/default.json">
-            <img src="img/cow2.png" width=200><BR>
-            Belajar Membaca 1
-        </a>
+    <div class="row">
+        <div class="column">
+            <A href="quiz.html?quiz=quiz/id/binatang.json">
+                <img src="img/cow2.png" width=100><BR>
+                Binatang
+            </a>
+        </div>
+    
+        <div class="column">
+            <A href="quiz.html?quiz=quiz/id/buah.json">
+                <img src="img/mango.png" width=100><BR>
+                Buah
+            </a>
+        </div>
     </div>
 
+    <div class="row">
+        <div class="column">
+            <A href="quiz.html?quiz=quiz/id/sayur.json">
+                <img src="img/cucumber.png" width=100><BR>
+                Sayur
+            </a>
+        </div>
+    
+        <div class="column">
+            <A href="quiz.html?quiz=quiz/id/makanan.json">
+                <img src="img/cheese.png" width=100><BR>
+                Makanan
+            </a>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="column">
+            <A href="quiz.html?quiz=quiz/id/benda.json">
+                <img src="img/bicycle.png" width=100><BR>
+                Benda
+            </a>
+        </div>
+    
+        <div class="column">
+            <A href="quiz.html?quiz=quiz/id/semua.json">
+                <img src="img/cactus.png" width=100><BR>
+                Semua
+            </a>
+        </div>    
+    </div>
+    
 </div>
 
 </body>
