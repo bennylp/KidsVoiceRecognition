@@ -9,8 +9,24 @@
     "display": 10,
     "questions": [
         {
+            "img": "broccoli.png",
+            "parts": ["bro-ko-li"]
+        },
+        {
+            "img": "broccoli2.png",
+            "parts": ["bro-ko-li"]
+        },
+        {
+            "img": "cabbage.png",
+            "parts": ["ku-bis"]
+        },
+        {
             "img": "carrot.png",
             "parts": ["wor-tel"]
+        },
+        {
+            "img": "chili.png",
+            "parts": ["ca-be"]
         },
         {
             "img": "coconut.png",
@@ -29,8 +45,40 @@
             "parts": ["te-rong"]
         },
         {
+            "img": "ginger.png",
+            "parts": ["ja-he"]
+        },
+        {
+            "img": "halloween.png",
+            "parts": ["la-bu"]
+        },
+        {
             "img": "mushroom.png",
             "parts": ["ja-mur"]
+        },
+        {
+            "img": "paprika.png",
+            "parts": ["pa-pri-ka"]
+        },
+        {
+            "img": "potato.png",
+            "parts": ["ken-tang"]
+        },
+        {
+            "img": "pumpkin.png",
+            "parts": ["la-bu"]
+        },
+        {
+            "img": "radish.png",
+            "parts": ["lo-bak"]
+        },
+        {
+            "img": "tamarind.png",
+            "parts": ["a-sam"]
+        },
+        {
+            "img": "tamarind2.png",
+            "parts": ["a-sam"]
         },
         {
             "img": "tomato.png",

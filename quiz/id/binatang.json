@@ -9,6 +9,18 @@
     "display": 10,
     "questions": [
         {
+            "img": "bear.png",
+            "parts": ["be-ru-ang"]
+        },
+        {
+            "img": "beetle.png",
+            "parts": ["kum-bang"]
+        },
+        {
+            "img": "camel.png",
+            "parts": ["on-ta"]
+        },
+        {
             "img": "cat.png",
             "parts": ["ku-cing"]
         },
@@ -49,12 +61,20 @@
             "parts": ["ti-kus"]
         },
         {
+            "img": "shark.png",
+            "parts": ["hiu"]
+        },
+        {
             "img": "sheep.png",
             "parts": ["dom-ba"]
         },
         {
             "img": "snake.png",
             "parts": ["u-lar"]
+        },
+        {
+            "img": "tiger.png",
+            "parts": ["ha-ri-mau"]
         },
         {
             "img": "zebra.png",

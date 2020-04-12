@@ -73,12 +73,15 @@ var curPart = 0;
 var MAX_PARTS = 5;  // match with part0-partN elements
 
 var SND_CORRECT_PART = 'sound/positive03.wav';
-var SND_WRONG_PART = 'sound/negative01.wav';
+var SND_WRONG_PART = 'sound/negative03.wav';
 var SND_CORRECT_ANSWER = 'sound/correct.mp3';
 var SND_WRONG_ANSWER = 'sound/failed01.wav';
-var SND_DICTATION_START = 'sound/positive02.wav';
-var SND_DICTATION_END = 'sound/negative02.wav';
+//var SND_DICTATION_START = 'sound/positive02.wav';
+//var SND_DICTATION_END = 'sound/negative02.wav';
 var SND_DICTATION_ERROR = 'sound/negative02.wav';
+var SND_DICTATION_START = '';
+var SND_DICTATION_END = '';
+
 
 //window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
 
@@ -353,7 +356,6 @@ function onAnswer(ans)
     
     if (ans == key) {
         // Correct answer
-        new Audio(SND_CORRECT_PART).play();
         nextPart();
     } else {
         // Wrong answer
@@ -392,14 +394,18 @@ function animateWrongAnswer()
 function nextPart()
 {
     var q = theQuiz.questions[curIndex];
+    
     debug(`nextPart(): curIndex=${curIndex}, curPart=${curPart}`)
+    
     if (curPart == q.parts.length-1) {
         new Audio(SND_CORRECT_ANSWER).play();
         renderQuestion(true);
     } else {
+        new Audio(SND_CORRECT_PART).play();
+        
         var elid = "part"+curPart.toString();
         var pel = document.getElementById(elid);
-        
+
         removeClass(pel, "qpart_active");
         addClass(pel, "qpart_inactive");
         

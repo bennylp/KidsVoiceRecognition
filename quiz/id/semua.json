@@ -17,6 +17,10 @@
             "parts": ["al-pu-kat"]
         },
         {
+            "img": "avocado2.png",
+            "parts": ["al-pu-kat"]
+        },
+        {
             "img": "bananas.png",
             "parts": ["pi-sang"]
         },
@@ -25,8 +29,24 @@
             "parts": ["ba-lon"]
         },
         {
+            "img": "bear.png",
+            "parts": ["be-ru-ang"]
+        },
+        {
+            "img": "beetle.png",
+            "parts": ["kum-bang"]
+        },
+        {
             "img": "book.png",
             "parts": ["bu-ku"]
+        },
+        {
+            "img": "broccoli.png",
+            "parts": ["bro-ko-li"]
+        },
+        {
+            "img": "broccoli2.png",
+            "parts": ["bro-ko-li"]
         },
         {
             "img": "broom.png",
@@ -41,8 +61,16 @@
             "parts": ["se-pe-da"]
         },
         {
+            "img": "cabbage.png",
+            "parts": ["ku-bis"]
+        },
+        {
             "img": "cactus.png",
             "parts": ["kak-tus"]
+        },
+        {
+            "img": "camel.png",
+            "parts": ["on-ta"]
         },
         {
             "img": "carrot.png",
@@ -51,6 +79,10 @@
         {
             "img": "cat.png",
             "parts": ["ku-cing"]
+        },
+        {
+            "img": "chili.png",
+            "parts": ["ca-be"]
         },
         {
             "img": "cow.png",
@@ -66,6 +98,10 @@
         },
         {
             "img": "coconut.png",
+            "parts": ["ke-la-pa"]
+        },
+        {
+            "img": "coconut2.png",
             "parts": ["ke-la-pa"]
         },
         {
@@ -97,16 +133,36 @@
             "parts": ["ga-jah"]
         },
         {
+            "img": "fig.png",
+            "parts": ["tin"]
+        },
+        {
             "img": "fish.png",
             "parts": ["i-kan"]
+        },
+        {
+            "img": "ginger.png",
+            "parts": ["ja-he"]
         },
         {
             "img": "grapes.png",
             "parts": ["ang-gur"]
         },
         {
+            "img": "halloween.png",
+            "parts": ["la-bu"]
+        },
+        {
             "img": "kiwi.png",
             "parts": ["ki-wi"]
+        },
+        {
+            "img": "lemon.png",
+            "parts": ["le-mon"]
+        },
+        {
+            "img": "lemon2.png",
+            "parts": ["le-mon"]
         },
         {
             "img": "hat.png",
@@ -125,8 +181,24 @@
             "parts": ["mang-ga"]
         },
         {
+            "img": "mango2.png",
+            "parts": ["mang-ga"]
+        },
+        {
+            "img": "mango3.png",
+            "parts": ["mang-ga"]
+        },
+        {
             "img": "mangosteen.png",
             "parts": ["mang-gis"]
+        },
+        {
+            "img": "melon.png",
+            "parts": ["me-lon"]
+        },
+        {
+            "img": "melon2.png",
+            "parts": ["me-lon"]
         },
         {
             "img": "mushroom.png",
@@ -145,12 +217,36 @@
             "parts": ["pe-pa-ya"]
         },
         {
+            "img": "paprika.png",
+            "parts": ["pa-pri-ka"]
+        },
+        {
+            "img": "passion-fruit.png",
+            "parts": ["mar-ki-sa"]
+        },
+        {
+            "img": "pear.png",
+            "parts": ["pir"]
+        },
+        {
             "img": "pigeon.png",
             "parts": ["da-ra"]
         },
         {
             "img": "pineapple.png",
             "parts": ["na-nas"]
+        },
+        {
+            "img": "potato.png",
+            "parts": ["ken-tang"]
+        },
+        {
+            "img": "pumpkin.png",
+            "parts": ["la-bu"]
+        },
+        {
+            "img": "radish.png",
+            "parts": ["lo-bak"]
         },
         {
             "img": "rat.png",
@@ -165,8 +261,16 @@
             "parts": ["ro-ket"]
         },
         {
+            "img": "shark.png",
+            "parts": ["hiu"]
+        },
+        {
             "img": "sheep.png",
             "parts": ["dom-ba"]
+        },
+        {
+            "img": "soursop.png",
+            "parts": ["sir-sak"]
         },
         {
             "img": "snake.png",
@@ -177,8 +281,24 @@
             "parts": ["sa-bun"]
         },
         {
+            "img": "starfruit.png",
+            "parts": ["be-lim-bing"]
+        },
+        {
+            "img": "tamarind.png",
+            "parts": ["a-sam"]
+        },
+        {
+            "img": "tamarind2.png",
+            "parts": ["a-sam"]
+        },
+        {
             "img": "table.png",
             "parts": ["me-ja"]
+        },
+        {
+            "img": "tiger.png",
+            "parts": ["ha-ri-mau"]
         },
         {
             "img": "tomato.png",

@@ -17,6 +17,10 @@
             "parts": ["al-pu-kat"]
         },
         {
+            "img": "avocado2.png",
+            "parts": ["al-pu-kat"]
+        },
+        {
             "img": "bananas.png",
             "parts": ["pi-sang"]
         },
@@ -29,6 +33,10 @@
             "parts": ["ke-la-pa"]
         },
         {
+            "img": "coconut2.png",
+            "parts": ["ke-la-pa"]
+        },
+        {
             "img": "cucumber.png",
             "parts": ["ti-mun"]
         },
@@ -37,20 +45,52 @@
             "parts": ["du-ri-an"]
         },
         {
+            "img": "fig.png",
+            "parts": ["tin"]
+        },
+        {
             "img": "grapes.png",
             "parts": ["ang-gur"]
+        },
+        {
+            "img": "halloween.png",
+            "parts": ["la-bu"]
         },
         {
             "img": "kiwi.png",
             "parts": ["ki-wi"]
         },
         {
+            "img": "lemon.png",
+            "parts": ["le-mon"]
+        },
+        {
+            "img": "lemon2.png",
+            "parts": ["le-mon"]
+        },
+        {
             "img": "mango.png",
+            "parts": ["mang-ga"]
+        },
+        {
+            "img": "mango2.png",
+            "parts": ["mang-ga"]
+        },
+        {
+            "img": "mango3.png",
             "parts": ["mang-ga"]
         },
         {
             "img": "mangosteen.png",
             "parts": ["mang-gis"]
+        },
+        {
+            "img": "melon.png",
+            "parts": ["me-lon"]
+        },
+        {
+            "img": "melon2.png",
+            "parts": ["me-lon"]
         },
         {
             "img": "oranges.png",
@@ -61,8 +101,32 @@
             "parts": ["pe-pa-ya"]
         },
         {
+            "img": "passion-fruit.png",
+            "parts": ["mar-ki-sa"]
+        },
+        {
+            "img": "pear.png",
+            "parts": ["pir"]
+        },
+        {
             "img": "pineapple.png",
             "parts": ["na-nas"]
+        },
+        {
+            "img": "pumpkin.png",
+            "parts": ["la-bu"]
+        },
+        {
+            "img": "soursop.png",
+            "parts": ["sir-sak"]
+        },
+        {
+            "img": "starfruit.png",
+            "parts": ["be-lim-bing"]
+        },
+        {
+            "img": "tamarind.png",
+            "parts": ["a-sam"]
         },
         {
             "img": "tomato.png",
