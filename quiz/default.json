@@ -1,0 +1,204 @@
+{
+    "lang": "id-ID",
+    "title": "Membaca",
+    "clue": true,
+    "input": "voice",
+    "bgcolor": "linen",
+    "uppercase": true,
+    "next": "quiz/default.json",
+    "display": 10,
+    "questions": [
+        {
+            "img": "apple.png",
+            "parts": ["a-pel"]
+        },
+        {
+            "img": "avocado.png",
+            "parts": ["al-pu-kat"]
+        },
+        {
+            "img": "bananas.png",
+            "parts": ["pi-sang"]
+        },
+        {
+            "img": "balloon.png",
+            "parts": ["ba-lon"]
+        },
+        {
+            "img": "book.png",
+            "parts": ["bu-ku"]
+        },
+        {
+            "img": "broom.png",
+            "parts": ["sa-pu"]
+        },
+        {
+            "img": "bullet.png",
+            "parts": ["pe-lu-ru"]
+        },
+        {
+            "img": "bicycle.png",
+            "parts": ["se-pe-da"]
+        },
+        {
+            "img": "cactus.png",
+            "parts": ["kak-tus"]
+        },
+        {
+            "img": "carrot.png",
+            "parts": ["wor-tel"]
+        },
+        {
+            "img": "cat.png",
+            "parts": ["ku-cing"]
+        },
+        {
+            "img": "cow.png",
+            "parts": ["sa-pi"]
+        },
+        {
+            "img": "cow2.png",
+            "parts": ["sa-pi"]
+        },
+        {
+            "img": "cheese.png",
+            "parts": ["ke-ju"]
+        },
+        {
+            "img": "coconut.png",
+            "parts": ["ke-la-pa"]
+        },
+        {
+            "img": "corn.png",
+            "parts": ["ja-gung"]
+        },
+        {
+            "img": "crocodile.png",
+            "parts": ["bu-a-ya"]
+        },
+        {
+            "img": "cucumber.png",
+            "parts": ["ti-mun"]
+        },
+        {
+            "img": "cup.png",
+            "parts": ["cang-kir"]
+        },
+        {
+            "img": "durian.png",
+            "parts": ["du-ri-an"]
+        },
+        {
+            "img": "eggplant.png",
+            "parts": ["te-rong"]
+        },
+        {
+            "img": "elephant.png",
+            "parts": ["ga-jah"]
+        },
+        {
+            "img": "fish.png",
+            "parts": ["i-kan"]
+        },
+        {
+            "img": "grapes.png",
+            "parts": ["ang-gur"]
+        },
+        {
+            "img": "kiwi.png",
+            "parts": ["ki-wi"]
+        },
+        {
+            "img": "hat.png",
+            "parts": ["to-pi"]
+        },
+        {
+            "img": "knife.png",
+            "parts": ["pi-sau"]
+        },
+        {
+            "img": "lamb.png",
+            "parts": ["kam-bing"]
+        },
+        {
+            "img": "mango.png",
+            "parts": ["mang-ga"]
+        },
+        {
+            "img": "mangosteen.png",
+            "parts": ["mang-gis"]
+        },
+        {
+            "img": "mushroom.png",
+            "parts": ["ja-mur"]
+        },
+        {
+            "img": "oranges.png",
+            "parts": ["je-ruk"]
+        },
+        {
+            "img": "panda.png",
+            "parts": ["pan-da"]
+        },
+        {
+            "img": "papaya.png",
+            "parts": ["pe-pa-ya"]
+        },
+        {
+            "img": "pigeon.png",
+            "parts": ["da-ra"]
+        },
+        {
+            "img": "pineapple.png",
+            "parts": ["na-nas"]
+        },
+        {
+            "img": "rat.png",
+            "parts": ["ti-kus"]
+        },
+        {
+            "img": "ring.png",
+            "parts": ["cin-cin"]
+        },
+        {
+            "img": "rocket.png",
+            "parts": ["ro-ket"]
+        },
+        {
+            "img": "sheep.png",
+            "parts": ["dom-ba"]
+        },
+        {
+            "img": "snake.png",
+            "parts": ["u-lar"]
+        },
+        {
+            "img": "soap.png",
+            "parts": ["sa-bun"]
+        },
+        {
+            "img": "table.png",
+            "parts": ["me-ja"]
+        },
+        {
+            "img": "tomato.png",
+            "parts": ["to-mat"]
+        },
+        {
+            "img": "tree.png",
+            "parts": ["po-hon"]
+        },
+        {
+            "img": "wall.png",
+            "parts": ["tem-bok"]
+        },
+        {
+            "img": "watermelon.png",
+            "parts": ["se-mang-ka"]
+        },
+        {
+            "img": "zebra.png",
+            "parts": ["ze-bra"]
+        }
+    ]
+}

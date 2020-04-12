@@ -1,0 +1,487 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<meta name="viewport" content="width=device-width, height=device-height,  initial-scale=1.0, user-scalable=no, user-scalable=0"/>
+<style>
+body {
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 40px;
+}
+
+.mainArea {
+    text-align: center;
+}
+
+.clueArea {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.clueImage {
+    max-width: 70%;
+    max-height: 50%;
+}
+
+.qpart {
+    color: MediumSeaGreen;
+    text-weight: bold;
+    text-shadow: 4px 4px white;
+}
+
+.qpart_inactive {
+    opacity: 0.3;
+}
+
+.qpart_active {
+    font-size: 60px;
+    opacity: 1;
+}
+
+.animateOn {
+    background-color: pink;
+    
+}
+
+input[type="text"]
+{
+    font-size: 40px;
+    text-align: center;
+    vertical-align: middle; 
+}
+
+button {
+    //font-size: 40px;
+}
+
+#answerButton {
+    vertical-align: bottom;
+}
+
+#voiceAnswer {
+    text-shadow: 4px 4px white;
+    font-style: oblique;
+}
+
+</style>
+
+<script type="text/javascript">
+var theQuiz;
+var curIndex = 0;
+var curPart = 0;
+var MAX_PARTS = 5;  // match with part0-partN elements
+
+var SND_CORRECT_PART = 'sound/positive03.wav';
+var SND_WRONG_PART = 'sound/negative01.wav';
+var SND_CORRECT_ANSWER = 'sound/correct.mp3';
+var SND_WRONG_ANSWER = 'sound/failed01.wav';
+var SND_DICTATION_START = 'sound/positive02.wav';
+var SND_DICTATION_END = 'sound/negative02.wav';
+var SND_DICTATION_ERROR = 'sound/negative02.wav';
+
+//window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
+
+
+function debug(msg) {
+    console.log(msg);
+    if (document.getElementById('debug')) {
+        var val = document.getElementById('debug').value;
+        document.getElementById('debug').value = val + msg + '\n';
+    }
+}
+
+function warn(msg) {
+    console.warn(msg);
+    if (document.getElementById('debug')) {
+        var val = document.getElementById('debug').value;
+        document.getElementById('debug').value = val + msg + '\n';
+    }
+}
+
+function error(msg) {
+    console.error(msg);
+    if (document.getElementById('debug')) {
+        var val = document.getElementById('debug').value;
+        document.getElementById('debug').value = val + msg + '\n';
+    }
+}
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+function hasClass(ele,cls) {
+    return !!ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+}
+
+function addClass(ele,cls) {
+    if (!hasClass(ele,cls)) ele.className += " "+cls;
+}
+
+function removeClass(ele,cls) {
+    if (hasClass(ele,cls)) {
+        var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+        ele.className=ele.className.replace(reg,' ');
+    }
+}
+
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
+
+function hasSpeechRecognition()
+{
+    return ('SpeechRecognition' in window) || ('webkitSpeechRecognition' in window);
+}
+
+function newSpeechRecognition()
+{
+    if ('SpeechRecognition' in window)
+        return new window.SpeechRecognition();
+    else if ('webkitSpeechRecognition' in window)
+        return new webkitSpeechRecognition();
+    else {
+        error('Speech recognition is not available!');
+    }
+}
+
+function loadQuiz() 
+{
+    var quizUrl = getParameterByName('quiz');
+
+    if (!quizUrl) {
+        quizUrl = 'quiz/default.json'
+    }
+    
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+           theQuiz = JSON.parse(this.responseText);
+           performQuiz();
+        }
+    };
+    xhttp.open("GET", quizUrl + "?_=" + new Date().getTime(), true);
+    xhttp.send();
+
+}
+window.onload = loadQuiz;
+
+function performQuiz() {
+    debug(`performQuiz(): curIndex=${curIndex}`)
+
+    if ("bgcolor" in theQuiz) {
+        document.body.style.background = theQuiz.bgcolor;
+    }
+    if ("bgimage" in theQuiz) {
+        document.body.background = theQuiz.bgimage;
+    }
+    
+    if ('display' in theQuiz && theQuiz.display < theQuiz.questions.length) {
+        shuffleArray(theQuiz.questions);
+        shuffleArray(theQuiz.questions);
+        theQuiz.questions = theQuiz.questions.splice(0, theQuiz.display);
+    }
+    
+    document.getElementById("showClue").checked = theQuiz.clue;
+    renderQuestion(false);
+}
+
+function renderQuestion(showAnswer)
+{
+    var q = theQuiz.questions[curIndex];
+    debug(`renderQuestion(): showAnswer=${showAnswer} curIndex=${curIndex}, curPart=${curPart}`)
+    
+    var showClue = document.getElementById("showClue").checked;
+    var hyphen = document.getElementById("hyphen").checked; 
+    
+    document.getElementById("clueImage").style.visibility = "visible";
+    if (showAnswer || showClue) {
+        document.getElementById("clueImage").style.opacity = 1; 
+        document.getElementById("clueImage").src = "img/" + q.img;
+        
+    } else {
+        document.getElementById("clueImage").style.opacity = 0.1;
+        document.getElementById("clueImage").src = "img/question2.png";
+    }
+    
+    for (var ip=0; ip<q.parts.length; ip++) {
+        var pel = document.getElementById("part"+ip.toString());
+        if (showAnswer || ip <= curPart)
+            pel.style.visibility = "visible";
+        else
+            pel.style.visibility = "hidden";
+            
+        var s = q.parts[ip];
+        if (!hyphen)
+            s = s.replace(/-/g, '');
+            
+        if (theQuiz.uppercase)
+            s = s.toUpperCase();
+        pel.textContent = s;
+        
+        if (showAnswer || ip==curPart) {
+            removeClass( pel, "qpart_inactive");
+            addClass( pel, "qpart_active");        
+        } else {
+            addClass( pel, "qpart_inactive");
+            removeClass( pel, "qpart_active");
+        }
+    }
+    for (var ip=q.parts.length; ip<MAX_PARTS; ip++) {
+        var pel = document.getElementById("part"+ip.toString());
+        addClass( pel, "qpart_inactive");
+        removeClass( pel, "qpart_active");
+        pel.style.visibility = "hidden";
+    }
+    
+    if (theQuiz.input == "voice" && !hasSpeechRecognition()) {
+        warn('Voice recognition is not available');
+    }
+    
+    
+    if (showAnswer) {
+        document.getElementById("nextPart").style.display = "block";
+        document.getElementById("textInput").style.display = "none";
+        document.getElementById("voiceInput").style.display = "none";
+        
+        document.getElementById("answer").style.display = "none";
+        document.getElementById("answerButton").style.display = "none";
+    } else {
+        document.getElementById("nextPart").style.display = "none";
+
+        if (theQuiz.input == "voice" && hasSpeechRecognition()) {
+            document.getElementById("textInput").style.display = "none";
+            document.getElementById("voiceInput").style.display = "block";
+        } else {
+            document.getElementById("textInput").style.display = "block";
+            document.getElementById("voiceInput").style.display = "none";
+        }
+        
+        document.getElementById("voiceAnswer").textContent = "";
+        document.getElementById("answerButton").style.display = "inline";
+        document.getElementById("answer").style.display = "inline";
+        document.getElementById("answer").value = "";
+        document.getElementById("answer").focus();
+    }
+}
+
+var animationCount;
+var animationTimer;
+var recognition = null;
+
+function startDictation() 
+{
+    if (recognition != null) {
+        recognition.stop();
+        recognition = null;
+        document.getElementById("micButton").src = "img/micbutton.png";
+        if (SND_DICTATION_END.length)
+            new Audio(SND_DICTATION_END).play();
+        return;
+    }
+        
+    recognition = newSpeechRecognition();
+
+    debug('startDictation()');
+    
+    if (SND_DICTATION_START.length)
+        new Audio(SND_DICTATION_START).play();
+
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = theQuiz.lang;
+    recognition.start();
+    recognition.maxAlternatives = 1;
+
+    document.getElementById("micButton").src = "img/recordbutton.png";
+    
+    recognition.onresult = function(e) {
+        var ans = e.results[0][0].transcript;
+        debug(`dictation done: text=${ans}`)
+        document.getElementById('voiceAnswer').textContent = ans;
+        recognition.stop();
+        recognition = null;
+        if (SND_DICTATION_END.length)
+            new Audio(SND_DICTATION_END).play();
+        onAnswer(ans);
+    };
+
+    recognition.onend = function() {
+        document.getElementById("micButton").src = "img/micbutton.png";
+        recognition = null;
+    }
+    
+    recognition.onerror = function(e) {
+        warn('Speech recognition error: ' + e.error);
+        document.getElementById('voiceAnswer').textContent = '-error-';
+        recognition.stop();
+        recognition = null;
+        if (SND_DICTATION_ERROR.length)
+            new Audio(SND_DICTATION_ERROR).play();
+    }
+}
+  
+  
+function onAnswer(ans)
+{
+    var q = theQuiz.questions[curIndex];
+    
+    if (!ans)
+        ans = document.getElementById("answer").value;
+    if (theQuiz.uppercase)
+        ans = ans.toUpperCase();
+        
+    var key = q.parts[curPart].replace(/-/g, '');
+    if (theQuiz.uppercase)
+        key = key.toUpperCase();
+
+    debug(`onAnswer(): user answer=${ans}, answer=${key}`)
+    
+    if (ans == key) {
+        // Correct answer
+        new Audio(SND_CORRECT_PART).play();
+        nextPart();
+    } else {
+        // Wrong answer
+        new Audio(SND_WRONG_PART).play();
+        animationCount = 0;
+        animationTimer = setInterval(animateWrongAnswer, 75);
+    }
+}
+
+function animateWrongAnswer()
+{
+    var elid = "part"+curPart.toString();
+    var pel = document.getElementById(elid);
+
+    animationCount++;
+    
+    if (animationCount == 1) {
+        // Initial
+        pel.focus();
+    }
+    
+    if (animationCount > 10) {
+        removeClass(pel, 'animateOn');
+        clearInterval(animationTimer);
+        
+        renderQuestion();
+    } else {
+        if (animationCount % 2) {
+            addClass(pel, 'animateOn');        
+        } else {
+            removeClass(pel, 'animateOn');
+        }
+    }
+}
+
+function nextPart()
+{
+    var q = theQuiz.questions[curIndex];
+    debug(`nextPart(): curIndex=${curIndex}, curPart=${curPart}`)
+    if (curPart == q.parts.length-1) {
+        new Audio(SND_CORRECT_ANSWER).play();
+        renderQuestion(true);
+    } else {
+        var elid = "part"+curPart.toString();
+        var pel = document.getElementById(elid);
+        
+        removeClass(pel, "qpart_active");
+        addClass(pel, "qpart_inactive");
+        
+        curPart++;
+        
+        elid = "part"+curPart.toString();
+        pel = document.getElementById(elid);
+        pel.style.visibility = "visible";
+        removeClass(pel, "qpart_inactive");
+        addClass(pel, "qpart_active");
+    }
+    document.getElementById("answer").value = "";
+    document.getElementById("answer").focus();
+}
+
+function nextQuestion()
+{
+    debug(`nextQuestion(): curIndex=${curIndex}`)
+    
+    if (curIndex == theQuiz.questions.length-1) {
+        // Done all questions
+        debug(`Done all questions, redirecting..`)
+        window.location = "done.html?next=" + window.location;
+        return;
+    }
+    
+    curIndex++;
+    curPart = 0;
+    renderQuestion();
+}
+
+
+</script>
+</head>
+<body>
+
+
+<div class="mainArea">
+
+    <div style="height: 100px; font-size: 14px;">
+        <input type="checkbox" id="showClue" name="showClue" value="1" onclick="renderQuestion()">
+        <label for="showClue"> Gambar</label>
+        <input type="checkbox" id="hyphen" name="hyphen" value="1" onclick="renderQuestion()" checked>
+        <label for="hyphen"> Hyphen</label>
+    </div>
+
+    <div class="clueArea">
+        <!-- Main image -->
+        <img id="clueImage" class="clueImage">
+    </div>
+    
+    <div id="qparts">
+        <!-- Parts -->
+        <span id="part0" class="qpart"></span>
+        <span id="part1" class="qpart"></span>
+        <span id="part2" class="qpart"></span>
+        <span id="part3" class="qpart"></span>
+        <span id="part4" class="qpart"></span>
+    </div>
+    
+    <div>
+        <div id="textInput">
+            <input type="text" id="answer" size="6">
+            <img src="img/nextbutton.png" width=60 height=60 onclick="onAnswer(null)" id="answerButton">
+        </div>
+        
+        <div id="nextPart">
+            <img src="img/nextbutton.png" width=100 height=100 onclick="nextQuestion()" id="nextButton">
+        </div>
+        
+        <div id="voiceInput">
+            <div><img src="img/micbutton.png" width=100 height=100 onclick="startDictation()" id="micButton"></div>
+            <div><span id="voiceAnswer"></span></div>
+        </div>
+    </div>
+
+    <!-- 
+    <div style="font-size: 12px; font-family: monospace; padding-top: 20px;">
+        <textarea id="debug" rows="10" cols="100"></textarea>
+    </div>
+    -->
+    
+</div>
+
+
+</body>
+</html>
