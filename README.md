@@ -15,8 +15,9 @@ Requires browser with HTML5 voice recognition:
 - Windows
   - Chrome
 - iOS:
-  - nothing works
+  - nothing works for now
 
+For more info regarding the technology including browser compatibility, see https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API.
 
 ## Credits
 
