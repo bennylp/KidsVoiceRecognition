@@ -345,19 +345,25 @@ function startDictation()
     recognition.interimResults = false;
     recognition.lang = theQuiz.lang;
     recognition.start();
-    recognition.maxAlternatives = 1;
+    recognition.maxAlternatives = 5;
 
     document.getElementById("micButton").src = "img/recordbutton.png";
     
     recognition.onresult = function(e) {
-        var ans = e.results[0][0].transcript;
+        var alts = [];
+        
+        for (var i=0; i<e.results[0].length; ++i) {
+            alts[i] = e.results[0][i].transcript;
+        }
+        
+        var ans = alts[0];
         debug(`dictation done: text=${ans}`)
         document.getElementById('voiceAnswer').textContent = ans;
         recognition.stop();
         recognition = null;
         if (SND_DICTATION_END.length)
             new Audio(SND_DICTATION_END).play();
-        onAnswer(ans);
+        onAnswer(ans, alts);
     };
 
     recognition.onend = function() {
@@ -375,24 +381,35 @@ function startDictation()
     }
 }
   
-  
-function onAnswer(ans)
+
+function onAnswer(ans, alts=[])
 {
     var q = theQuiz.questions[curIndex];
-    
-    if (!ans)
-        ans = document.getElementById("answer").value;
-    if (theQuiz.uppercase)
-        ans = ans.toUpperCase();
-    ans = ans.replace(/ /g, '')
-        
+    var correct = false;
+
     var key = q.parts[curPart].replace(/-/g, '').replace(/ /g, '');
     if (theQuiz.uppercase)
         key = key.toUpperCase();
 
-    debug(`onAnswer(): user answer=${ans}, answer=${key}`)
+    if (!ans)
+        ans = document.getElementById("answer").value;
     
-    if (ans == key || getParameterByName('bypass')) {
+    alts.splice(0, 0, ans);
+    debug(`onAnswer(): expected=${key}, answers=${alts}`)
+    
+    for (var i=0; i<alts.length; ++i) {
+        var ans = alts[i];
+        if (theQuiz.uppercase)
+            ans = ans.toUpperCase();
+        ans = ans.replace(/ /g, '')
+        if (ans == key) {
+            correct = true;
+            break;
+        }
+    }
+
+    
+    if (correct || getParameterByName('bypass')) {
         // Correct answer
         nextPart();
     } else {
@@ -479,7 +496,7 @@ function nextQuestion()
     </div>
     
     <div>
-        <div id="textInput">
+        <div id="textInput" style="display: none">
             <input type="text" id="answer" size="6">
             <img src="img/nextbutton.png" width=50 height=50 onclick="onAnswer(null)" id="answerButton">
             <div style='font-size: 12px;'>
@@ -487,11 +504,11 @@ function nextQuestion()
             </div>
         </div>
         
-        <div id="nextPart">
+        <div id="nextPart" style="display: none">
             <img src="img/checkbutton.png" width=100 height=100 onclick="nextQuestion()" id="nextButton">
         </div>
         
-        <div id="voiceInput">
+        <div id="voiceInput" style="display: none">
             <div><img src="img/micbutton.png" width=100 height=100 onmousedown="startDictation()" id="micButton"></div>
             <div><span id="voiceAnswer"></span></div>
         </div>
