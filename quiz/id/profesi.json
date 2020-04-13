@@ -1,0 +1,16 @@
+{
+    "lang": "id-ID",
+    "title": "Profesi",
+    "clue": true,
+    "input": "voice",
+    "bgcolor": "linen",
+    "uppercase": true,
+    "next": "quiz/default.json",
+    "display": 10,
+    "questions": [
+        {
+            "img": "balloon.png",
+            "parts": ["ba-lon"]
+        },
+    ]
+}
