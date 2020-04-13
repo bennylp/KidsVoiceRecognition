@@ -1,3 +1,21 @@
+# Kids Voice Recognition Game (2+)
+
+Allow kids from 2+ to learn to recognize objects and read words by using voice recognition, using just static HTML pages.
+
+See the game live at: **https://bennylp.github.io/KidsVoiceRecognition/**
+
+Requires browser with HTML5 voice recognition:
+- Android:
+  - Chrome
+  - Samsung Internet
+- Mac:
+  - Chrome
+- Windows
+  - Chrome
+- iOS:
+  - nothing works
+
+
 ## Credits
 
 - Images: 

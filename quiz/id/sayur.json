@@ -45,6 +45,10 @@
             "parts": ["te-rong"]
         },
         {
+            "img": "garlic.png",
+            "parts": ["ba-wang pu-tih"]
+        },
+        {
             "img": "ginger.png",
             "parts": ["ja-he"]
         },
